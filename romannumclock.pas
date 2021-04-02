@@ -166,6 +166,24 @@ procedure clock(gpstime:string; x,y,r:LongWord );
        VGShapesLine(0,0, 0,Dialsec / 2 * 0.9);
        VGShapesRotate(Seconds * 6);
 
+       //return to center
+       VGShapesTranslate(0,Dialsec * 0.8);
+
+       //draw hour minute hands over second dial
+       VGShapesStroke(0,0,0,1);
+       VGShapesFill(0,0,0,1);
+       VGShapesCircle(0,0,Dial * 0.08);
+
+       VGShapesRotate(Hours * -30);
+       VGShapesStrokeWidth(Dial * 0.025);
+       VGShapesLine(0,0, 0,PosNum);
+       VGShapesRotate(Hours * 30);
+
+       VGShapesRotate(Minutes * -6);
+       VGShapesStrokeWidth(Dial * 0.01);
+       VGShapesLine(0,0, 0,PosT2);
+       VGShapesRotate(Minutes * 6);
+
        //reset back ot zero position
        VGShapesTranslate(-x,-y);
 
